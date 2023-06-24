@@ -1,0 +1,57 @@
+.card-details-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-details-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.card-details-form label {
+  font-weight:500;
+  font-size: 14px;
+}
+
+.card-details-form input {
+  width: 300px;
+  font-family: 'Roboto Mono', monospace;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.card-details-form .expiryDateClass{
+  width: 50px;
+}
+#expiryDate{
+  margin-right: 10px;
+}
+#exp_cvc{
+  display: flex;
+}
+#id_cvc{
+  margin-left: 20px;
+}
+#cvc{
+  width: 158px;
+}
+#submit_button{
+  margin-top: 15px;
+  width: 307px;
+  height: 30px;
+  border-radius: 5px;
+  border: 0px;
+  background-color: rgb(32, 1, 32);
+  color: white;
+}
+
+.card-details-form .error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
