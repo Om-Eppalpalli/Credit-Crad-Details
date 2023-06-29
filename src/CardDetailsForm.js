@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './CardDetailsForm.css';
 import CreditCard from './CreditCard';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const CardDetailsForm = () => {
   const [cardNumber, setCardNumber] = useState('');
@@ -15,13 +18,11 @@ const CardDetailsForm = () => {
     if (name === 'cardNumber') {
       setCardNumber(value);
     } else if (name === 'expiryMonth') {
-      if(value.length <= 2)
-      {
+      if (value.length <= 2) {
         setExpiryMonth(value);
       }
     } else if (name === 'expiryYear') {
-      if(value.length <= 2)
-      {
+      if (value.length <= 2) {
         setExpiryYear(value);
       }
     } else if (name === 'cvc') {
@@ -72,119 +73,123 @@ const CardDetailsForm = () => {
       console.log('Expiry Year:', expiryYear);
       console.log('CVC:', cvc);
       console.log('Card Holder Name:', cardHolderName);
+  
+      toast.success('Form submitted successfully!', {
+        position: toast.POSITION.TOP_CENTER
+      });
     }
   };
 
-  return (
-    <div className="card-details-form">
-      <h1>Card Details Form</h1>
-      <div className="container">
-        <div id="right_container">
-          <form onSubmit={handleSubmit}>
-            <div id="form_div">
-              <div className="div_flex">
-                <label htmlFor="cardHolderName">CARDHOLDER NAME</label>
-                <div>
-                  <input
-                    type="text"
-                    id="cardHolderName"
-                    name="cardHolderName"
-                    value={cardHolderName}
-                    placeholder="e.g. Virat Kohli"
-                    maxLength={50}
-                    onChange={handleInputChange}
-                  />
-                  <div>{errors.cardHolderName && <span className="error">{errors.cardHolderName}</span>}</div>
-                </div>
-              </div>
-              <div className="div_flex">
-                <label htmlFor="cardNumber">CARD NUMBER</label>
-                <div>
-                  <input
-                    type="text"
-                    id="cardNumber"
-                    name="cardNumber"
-                    value={cardNumber}
-                    placeholder="e.g. 1234 5678 9123 0000"
-                    maxLength={19}
-                    onChange={handleInputChange}
-                  />
-                  <div>{errors.cardNumber && <span className="error">{errors.cardNumber}</span>}</div>
-                </div>
-              </div>
-              <div id="exp_cvc">
+    return (
+      <div className="card-details-form">
+        <h1>Card Details Form</h1>
+        <div className="container">
+          <div id="right_container">
+            <form onSubmit={handleSubmit}>
+              <div id="form_div">
                 <div className="div_flex">
-                  <label htmlFor="expiryDate">EXP. DATE (MM/YY)</label>
-                  <div id="flex_mon_year">
-                    <div id="div_month">
-                      <input
-                        type="number"
-                        className="expiryDateClass"
-                        id="expiryMonth"
-                        name="expiryMonth"
-                        value={expiryMonth}
-                        placeholder="MM"
-                        maxLength={2}
-                        onChange={handleInputChange}
-                      />
-                      <div>{errors.expiryMonth && <span className="error">{errors.expiryMonth}</span>}</div>
-                    </div>
-                    <div id="div_year">
-                      <input
-                        type="number"
-                        className="expiryDateClass"
-                        id="expiryYear"
-                        name="expiryYear"
-                        value={expiryYear}
-                        placeholder="YY"
-                        maxLength={2}
-                        onChange={handleInputChange}
-                      />
-                      <div>{errors.expiryYear && <span className="error">{errors.expiryYear}</span>}</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="div_flex" id="id_cvc">
-                  <label htmlFor="cvc">CVC</label>
+                  <label htmlFor="cardHolderName">CARDHOLDER NAME</label>
                   <div>
                     <input
-                      type="number"
-                      id="cvc"
-                      name="cvc"
-                      value={cvc}
-                      placeholder="e.g. 123"
-                      maxLength={3}
+                      type="text"
+                      id="cardHolderName"
+                      name="cardHolderName"
+                      value={cardHolderName}
+                      placeholder="e.g. Virat Kohli"
+                      maxLength={50}
                       onChange={handleInputChange}
                     />
-                    <div>{errors.cvc && <span className="error">{errors.cvc}</span>}</div>
+                    <div>{errors.cardHolderName && <span className="error">{errors.cardHolderName}</span>}</div>
                   </div>
                 </div>
+                <div className="div_flex">
+                  <label htmlFor="cardNumber">CARD NUMBER</label>
+                  <div>
+                    <input
+                      type="text"
+                      id="cardNumber"
+                      name="cardNumber"
+                      value={cardNumber}
+                      placeholder="e.g. 1234 5678 9123 0000"
+                      maxLength={19}
+                      onChange={handleInputChange}
+                    />
+                    <div>{errors.cardNumber && <span className="error">{errors.cardNumber}</span>}</div>
+                  </div>
+                </div>
+                <div id="exp_cvc">
+                  <div className="div_flex">
+                    <label htmlFor="expiryDate">EXP. DATE (MM/YY)</label>
+                    <div id="flex_mon_year">
+                      <div id="div_month">
+                        <input
+                          type="number"
+                          className="expiryDateClass"
+                          id="expiryMonth"
+                          name="expiryMonth"
+                          value={expiryMonth}
+                          placeholder="MM"
+                          maxLength={2}
+                          onChange={handleInputChange}
+                        />
+                        <div>{errors.expiryMonth && <span className="error">{errors.expiryMonth}</span>}</div>
+                      </div>
+                      <div id="div_year">
+                        <input
+                          type="number"
+                          className="expiryDateClass"
+                          id="expiryYear"
+                          name="expiryYear"
+                          value={expiryYear}
+                          placeholder="YY"
+                          maxLength={2}
+                          onChange={handleInputChange}
+                        />
+                        <div>{errors.expiryYear && <span className="error">{errors.expiryYear}</span>}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="div_flex" id="id_cvc">
+                    <label htmlFor="cvc">CVC</label>
+                    <div>
+                      <input
+                        type="number"
+                        id="cvc"
+                        name="cvc"
+                        value={cvc}
+                        placeholder="e.g. 123"
+                        maxLength={3}
+                        onChange={handleInputChange}
+                      />
+                      <div>{errors.cvc && <span className="error">{errors.cvc}</span>}</div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" id="submit_button">
+                  Confirm
+                </button>
               </div>
-              <button type="submit" id="submit_button">
-                Confirm
-              </button>
+            </form>
+          </div>
+          <div id="wrap_left">
+            <div id="back_color"></div>
+            <div id="left_container">
+              <CreditCard
+                frontSideProps={{
+                  cardNumber: cardNumber,
+                  cardHolderName: cardHolderName,
+                  expiryMonth: expiryMonth,
+                  expiryYear: expiryYear,
+                }}
+                backSideProps={{
+                  cvc: cvc,
+                }}
+              />
             </div>
-          </form>
-        </div>
-        <div id="wrap_left">
-          <div id="back_color"></div>
-          <div id="left_container">
-            <CreditCard
-              frontSideProps={{
-                cardNumber: cardNumber,
-                cardHolderName: cardHolderName,
-                expiryMonth: expiryMonth,
-                expiryYear: expiryYear,
-              }}
-              backSideProps={{
-                cvc: cvc,
-              }}
-            />
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
-export default CardDetailsForm;
+  export default CardDetailsForm;

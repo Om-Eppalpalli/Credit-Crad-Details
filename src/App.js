@@ -1,15 +1,27 @@
 import React from 'react';
 import CardDetailsForm from './CardDetailsForm';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ReactDOM from 'react-dom';
 
 function App() {
   return (
     <div className="App">
       <CardDetailsForm />
+      <ToastContainer />
     </div>
   );
 }
 
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
 export default App;
+
 
 
 
